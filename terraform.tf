@@ -1,7 +1,7 @@
 terraform {
-  backend "s3" {}
+  # backend "s3" {}
 
-  required_version = ">= 1.3.5"
+  # required_version = ">= 1.3.5"
 
   required_providers {
     aws = {
@@ -13,4 +13,5 @@ terraform {
 
 provider "aws" {
   region  = "us-east-1"
+  profile = "personal_aws"
 }
