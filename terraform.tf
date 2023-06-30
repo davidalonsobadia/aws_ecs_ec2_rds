@@ -1,7 +1,8 @@
 terraform {
-  # backend "s3" {}
-
-  # required_version = ">= 1.3.5"
+  backend "s3" {
+    bucket = "infrastructure-aws-ecs-ec2-rds"
+    key    = "terraform.tfstate"
+  }
 
   required_providers {
     aws = {
