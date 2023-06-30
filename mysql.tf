@@ -1,13 +1,10 @@
 resource "aws_db_instance" "mysql" {
   identifier                = "mysql"
   allocated_storage         = 5
-  backup_retention_period   = 2
-  backup_window             = "01:00-01:30"
-  maintenance_window        = "sun:03:00-sun:03:30"
-  multi_az                  = true
+  multi_az                  = false
   engine                    = "mysql"
-  engine_version            = "5.7"
-  instance_class            = "db.t2.micro"
+  engine_version            = "8.0.32"
+  instance_class            = "db.t3.micro"
   db_name                   = "worker_db"
   username                  = var.rds_username
   password                  = var.rds_password
@@ -16,5 +13,5 @@ resource "aws_db_instance" "mysql" {
   vpc_security_group_ids    = [aws_security_group.rds_sg.id, aws_security_group.ecs_sg.id]
   skip_final_snapshot       = true
   final_snapshot_identifier = "worker-final"
-  publicly_accessible       = true
+  publicly_accessible       = false
 }
